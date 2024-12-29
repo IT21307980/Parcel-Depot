@@ -1,4 +1,4 @@
-package uk.ac.herts.sp23ahy.mod_6com2013.asgnpart2.controller;
+package controller;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.util.HashSet;
 import java.util.List;
 
-import uk.ac.herts.sp23ahy.mod_6com2013.asgnpart2.model.Parcel;
+import model.Parcel;
 
 public class ParcelManager
 {

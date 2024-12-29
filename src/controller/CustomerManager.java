@@ -1,10 +1,10 @@
-package uk.ac.herts.sp23ahy.mod_6com2013.asgnpart2.controller;
+package controller;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.TreeSet;
 
-import uk.ac.herts.sp23ahy.mod_6com2013.asgnpart2.model.Customer;
+import model.Customer;
 
 public class CustomerManager
 {

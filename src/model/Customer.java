@@ -1,4 +1,4 @@
-package uk.ac.herts.sp23ahy.mod_6com2013.asgnpart2.model;
+package model;
 
 import java.io.Serializable;
 

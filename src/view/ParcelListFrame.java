@@ -1,4 +1,4 @@
-package uk.ac.herts.sp23ahy.mod_6com2013.asgnpart2.view;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -14,8 +14,8 @@ import javax.swing.UIManager;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import javax.swing.table.DefaultTableModel;
 
-import uk.ac.herts.sp23ahy.mod_6com2013.asgnpart2.controller.ParcelManager;
-import uk.ac.herts.sp23ahy.mod_6com2013.asgnpart2.model.Parcel;
+import controller.ParcelManager;
+import model.Parcel;
 
 public class ParcelListFrame extends JFrame
 // XXX: 1st Option: JFrame as listener
