@@ -8,6 +8,17 @@ public class Parcel implements Serializable
 	private String parcelID;
 	private int daysInDepot;
 	private double weight, length, width, height;
+	
+	
+	// Constructor
+    public Parcel(String parcelID, double weight, int daysInDepot, int length, int width, int height) {
+        this.parcelID = parcelID;
+        this.weight = weight;
+        this.daysInDepot = daysInDepot;
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
 
 	public String getParcelID()
 	{
@@ -80,20 +91,11 @@ public class Parcel implements Serializable
 	{
 		return obj instanceof Parcel that && parcelID.equals(that.parcelID);
 
-		// boolean equals = false;
-		//
-		// if (obj instanceof Parcel)
-		// {
-		// Parcel that = (Parcel) obj;
-		// equals = parcelID.equals(that.parcelID);
-		// }
-		//
-		// return equals;
 	}
 
 	@Override
 	public String toString()
 	{
-		return parcelID;
+        return "Parcel[ID=" + parcelID + ", Weight=" + weight + ", DaysInDepot=" + daysInDepot + "]";
 	}
 }

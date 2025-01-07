@@ -1,0 +1,16 @@
+===== Delivered Parcel Details =====
+Customer Name: Peter White
+Parcels:
+Parcel ID: X036, Weight: 4.0kg, Days in Depot: 8, Dimensions: 6.0x9.0x12.0
+Total Fee: $9.4
+====================================
+
+Processed customer: Peter White, Total Fee: $9.4
+===== Delivered Parcel Details =====
+Customer Name: Jo
+Parcels:
+Parcel ID: x007, Weight: 1.0kg, Days in Depot: 9, Dimensions: 4.0x4.0x4.0
+Total Fee: $9.6
+====================================
+
+Processed customer: Jo, Total Fee: $9.6

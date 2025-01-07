@@ -1,5 +1,8 @@
 package model;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Log {
 	
 	private static Log instance;	//variable for single log instance
@@ -30,5 +33,19 @@ public class Log {
 	public void clearLog() {
 		logBuffer.setLength(0);
 	}
+	
+	public void logDeliveredParcelDetails(Customer customer, String parcelDetails, double totalFee) {
+        logBuffer.append("===== Delivered Parcel Details =====\n")
+                 .append("Customer Name: ").append(customer.getName()).append("\n")
+                 .append("Parcels:\n").append(parcelDetails)
+                 .append("Total Fee: $").append(totalFee).append("\n")
+                 .append("====================================\n\n");
+    }
+
+    public void saveLogToFile(String fileName) throws IOException {
+        try (FileWriter writer = new FileWriter(fileName)) {
+            writer.write(logBuffer.toString());
+        }
+    }
 
 }

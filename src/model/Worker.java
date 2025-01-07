@@ -1,53 +1,32 @@
 package model;
 
+import javax.swing.JTextArea;
+
 public class Worker {
-	
-	private String workerId;
-	private String name;
-	private double feePerDay, feePerKg;
-	
-	
-	
-	public String getWorkerId() {
-		return workerId;
-	}
 
-
-	public Worker(String workerId, String name, double feePerDay, double feePerKg) {
-		super();
-		this.workerId = workerId;
-		this.name = name;
-		this.feePerDay = feePerDay;
-		this.feePerKg = feePerKg;
-	}
-	
-	public double processCustomers(Customer customer, Parcel parcel) {
-		
-		if(customer == null || parcel == null) {
-			System.out.println("No parcels or customers. Cannot process.");
-			return 0;
-		}
-		double fee = calculateFee(parcel);
-		System.out.println("Processing Customer: " + customer.getLastName());
-        System.out.println("Parcel Details: " + parcel);
-        System.out.println("Calculated Fee: $" + fee);
-
-        // Release parcel logic (e.g., mark as processed)
-        releaseParcel(parcel);
-
-        return fee;
-	}
-	
-	private double calculateFee(Parcel parcel) {
-		
-		return parcel.getDaysInDepot() * feePerDay;
-	}
-	
-	private void releaseParcel(Parcel parcel) {
-        System.out.println("Parcel with ID " + parcel.getParcelID() + " has been released.");
-       
+    public double calculateFee(Parcel parcel) {
+        double baseFee = 5.0;
+        double weightFee = parcel.getWeight() * 0.1;
+        double timeFee = parcel.getDaysInDepot() * 0.5;
+        return baseFee + weightFee + timeFee;
     }
-	
-	
 
+    public void processCustomer(Customer customer, ParcelMap parcelMap, Log log, JTextArea outputArea) {
+        outputArea.append("Processing customer: " + customer.getName() + "\n");
+        log.addEvent("Started processing customer: " + customer.getName());
+
+        for (Parcel parcel : customer.getParcels()) {
+            if (parcelMap.containsParcel(parcel.getParcelID())) {
+                double fee = calculateFee(parcel);
+                log.addEvent("Parcel ID: " + parcel.getParcelID() + " processed. Fee: $" + fee);
+                outputArea.append("Parcel ID: " + parcel.getParcelID() + ", Fee: $" + fee + "\n");
+            } else {
+                log.addEvent("Parcel ID: " + parcel.getParcelID() + " not found in depot!");
+                outputArea.append("Parcel ID: " + parcel.getParcelID() + " not found in depot!\n");
+            }
+        }
+
+        log.addEvent("Finished processing customer: " + customer.getName());
+        outputArea.append("Finished processing customer: " + customer.getName() + "\n\n");
+    }
 }

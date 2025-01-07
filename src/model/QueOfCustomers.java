@@ -1,67 +1,62 @@
 package model;
 
+import java.io.*;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class QueOfCustomers {
-    
-    private Queue<Customer> customerQueue; 	// Queue to store customer objects
+    private Queue<Customer> customerQueue;
 
-    // Constructor
     public QueOfCustomers() {
         customerQueue = new LinkedList<>();
     }
 
-    // Add a customer to the queue
-    public void addToQueue(Customer customer) {
+    public void addCustomer(Customer customer) {
         customerQueue.add(customer);
-        System.out.println("Customer added to the queue: " + customer);
     }
 
-    // Remove and return the next customer in the queue
-    public Customer removeFromQueue() {
-        Customer removedCustomer = customerQueue.poll();
-        if (removedCustomer != null) {
-            System.out.println("Customer removed from the queue: " + removedCustomer);
-        } else {
-            System.out.println("Queue is empty. No customer to remove.");
-        }
-        return removedCustomer;
+    public Customer processCustomer() {
+        return customerQueue.poll();
     }
 
-    // Peek at the next customer in the queue without removing
-    public Customer peek() {
-        Customer nextCustomer = customerQueue.peek();
-        if (nextCustomer != null) {
-            System.out.println("Next customer in the queue: " + nextCustomer);
-        } else {
-            System.out.println("Queue is empty.");
-        }
-        return nextCustomer;
-    }
-
-    // Print all customers in the queue
-    public void printQueue() {
-        if (customerQueue.isEmpty()) {
-            System.out.println("Queue is empty.");
-        } else {
-            System.out.println("Current Queue:");
-            for (Customer customer : customerQueue) {
-                System.out.println(customer);
-            }
-        }
-    }
-
-    // Check if the queue is empty
     public boolean isEmpty() {
         return customerQueue.isEmpty();
     }
 
-    // Get the size of the queue
-    public int size() {
-        return customerQueue.size();
+    public List<Customer> getAllCustomers() {
+        return new LinkedList<>(customerQueue);
     }
 
-    
-}
+    public Customer getCustomerByName(String name) {
+        for (Customer customer : customerQueue) {
+            if (customer.getName().equalsIgnoreCase(name)) {
+                return customer;
+            }
+        }
+        return null;
+    }
 
+    public void removeCustomer(Customer customer) {
+        customerQueue.remove(customer);
+    }
+
+    public void loadCustomersFromFile(String fileName, ParcelMap parcelMap) throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                String customerName = parts[0];
+                Customer customer = new Customer(customerName, "");
+
+                for (int i = 1; i < parts.length; i++) {
+                    Parcel parcel = parcelMap.getParcel(parts[i]);
+                    if (parcel != null) {
+                        customer.addParcel(parcel);
+                    }
+                }
+                addCustomer(customer);
+            }
+        }
+    }
+}
