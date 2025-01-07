@@ -1,6 +1,5 @@
 package model;
 
-<<<<<<< HEAD
 import javax.swing.JTextArea;
 
 public class Worker {
@@ -30,8 +29,4 @@ public class Worker {
         log.addEvent("Finished processing customer: " + customer.getName());
         outputArea.append("Finished processing customer: " + customer.getName() + "\n\n");
     }
-=======
-public class Worker {
-
->>>>>>> 2cc28a33254dba5e4c18f866231ffde44135d435
 }

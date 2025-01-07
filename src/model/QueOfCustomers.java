@@ -1,6 +1,5 @@
 package model;
 
-<<<<<<< HEAD
 import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -60,10 +59,4 @@ public class QueOfCustomers {
             }
         }
     }
-=======
-public class QueOfCustomers {
-	
-	
-
->>>>>>> 2cc28a33254dba5e4c18f866231ffde44135d435
 }
