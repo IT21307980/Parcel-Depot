@@ -1,8 +1,11 @@
 package model;
 
+<<<<<<< HEAD
 import java.io.FileWriter;
 import java.io.IOException;
 
+=======
+>>>>>>> 2cc28a33254dba5e4c18f866231ffde44135d435
 public class Log {
 	
 	private static Log instance;	//variable for single log instance
@@ -33,6 +36,7 @@ public class Log {
 	public void clearLog() {
 		logBuffer.setLength(0);
 	}
+<<<<<<< HEAD
 	
 	public void logDeliveredParcelDetails(Customer customer, String parcelDetails, double totalFee) {
         logBuffer.append("===== Delivered Parcel Details =====\n")
@@ -47,5 +51,7 @@ public class Log {
             writer.write(logBuffer.toString());
         }
     }
+=======
+>>>>>>> 2cc28a33254dba5e4c18f866231ffde44135d435
 
 }
